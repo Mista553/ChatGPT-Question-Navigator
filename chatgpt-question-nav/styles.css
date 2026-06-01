@@ -1,0 +1,99 @@
+#cgpt-question-nav {
+  position: fixed;
+  top: 50%;
+  right: 18px;
+  z-index: 2147483647;
+  transform: translateY(-50%);
+  width: 18px;
+  max-height: calc(100vh - 120px);
+  color: #111827;
+  font: 13px/1.35 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  pointer-events: none;
+}
+
+#cgpt-question-nav * {
+  box-sizing: border-box;
+}
+
+.cgpt-question-nav__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  max-height: calc(100vh - 120px);
+  padding: 8px 0;
+  overflow: visible;
+  pointer-events: auto;
+}
+
+.cgpt-question-nav__dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 1px solid rgba(17, 24, 39, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 1px 4px rgba(17, 24, 39, 0.16);
+  cursor: pointer;
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease;
+}
+
+.cgpt-question-nav__dot:hover,
+.cgpt-question-nav__dot:focus-visible {
+  border-color: #0f766e;
+  background: #0f766e;
+  box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.14);
+  outline: none;
+  transform: scale(1.25);
+}
+
+.cgpt-question-nav__dot--active {
+  border-color: #0f766e;
+  background: #0f766e;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.16);
+}
+
+.cgpt-question-nav__tooltip {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  width: max-content;
+  max-width: min(360px, calc(100vw - 72px));
+  padding: 8px 10px;
+  border: 1px solid rgba(17, 24, 39, 0.1);
+  border-radius: 8px;
+  color: #111827;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 12px 28px rgba(17, 24, 39, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  text-align: left;
+  transform: translate(6px, -50%);
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  backdrop-filter: blur(10px);
+}
+
+.cgpt-question-nav__dot:hover .cgpt-question-nav__tooltip,
+.cgpt-question-nav__dot:focus-visible .cgpt-question-nav__tooltip {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+@media (max-width: 760px) {
+  #cgpt-question-nav {
+    right: 10px;
+  }
+
+  .cgpt-question-nav__tooltip {
+    max-width: calc(100vw - 56px);
+  }
+}
